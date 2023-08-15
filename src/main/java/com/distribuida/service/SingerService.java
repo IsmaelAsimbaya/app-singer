@@ -28,7 +28,7 @@ public class SingerService {
         return jsonArrayBuilder.build();
     }
 
-    public JsonObject getSingerByIdAsJsonObject(Long id) {
+    public JsonObject getSingerByIdAsJsonObject(Integer id) {
         Singer singer = singerRepository.getSingerById(id);
         if (singer != null) {
             return singerToJson(singer);
@@ -45,7 +45,7 @@ public class SingerService {
         singerRepository.updateSinger(singer);
     }
 
-    public void deleteSinger(Long id) {
+    public void deleteSinger(Integer id) {
         singerRepository.deleteSinger(id);
     }
 
@@ -55,7 +55,8 @@ public class SingerService {
                 .add("id", singer.getId())
                 .add("first_Name", singer.getFirst_name())
                 .add("last_Name", singer.getLast_name())
-                .add("birth_Date", singer.getBirth_date().toString())  // Convertir a formato adecuado
+                .add("birth_Date", singer.getBirth_date().toString())
+                .add("version", singer.getVersion().toString())// Convertir a formato adecuado
                 .build();
     }
 }

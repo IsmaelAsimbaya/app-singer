@@ -17,7 +17,7 @@ public class SingerRepository {
                 .getResultList();
     }
 
-    public Singer getSingerById(Long id) {
+    public Singer getSingerById(Integer id) {
         return entityManager.find(Singer.class, id);
     }
 
@@ -29,7 +29,7 @@ public class SingerRepository {
         entityManager.merge(singer);
     }
 
-    public void deleteSinger(Long id) {
+    public void deleteSinger(Integer id) {
         Singer singer = entityManager.find(Singer.class, id);
         if (singer != null) {
             entityManager.remove(singer);

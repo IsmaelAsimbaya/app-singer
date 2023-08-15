@@ -8,7 +8,7 @@
         <class>com.distribuida.db.Singer</class>
         <class>com.distribuida.db.Album</class>
         <properties>
-            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
         </properties>
     </persistence-unit>
 </persistence>

@@ -4,6 +4,7 @@ import com.distribuida.db.Singer;
 import jakarta.inject.Inject;
 import jakarta.json.JsonArray;
 import jakarta.json.JsonObject;
+import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -12,6 +13,7 @@ import com.distribuida.service.SingerService;
 @Path("/singers")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@Transactional
 public class SingerResource {
 
     @Inject
@@ -25,7 +27,7 @@ public class SingerResource {
 
     @GET
     @Path("/{id}")
-    public Response getSingerById(@PathParam("id") Long id) {
+    public Response getSingerById(@PathParam("id") Integer id) {
         JsonObject singer = singerService.getSingerByIdAsJsonObject(id);
         if (singer != null) {
             return Response.ok(singer).build();
@@ -50,7 +52,7 @@ public class SingerResource {
 
     @DELETE
     @Path("/{id}")
-    public Response deleteSinger(@PathParam("id") Long id) {
+    public Response deleteSinger(@PathParam("id") Integer id) {
         singerService.deleteSinger(id);
         return Response.noContent().build();
     }
