@@ -21,7 +21,7 @@
    <ssl id="defaultSSLConfig" trustDefaultCerts="true" />
 
     <library id="PostgreSQLLib">
-        <fileset dir="C:/Users/User/.m2/repository/org/postgresql/postgresql/42.6.0" includes="postgresql-42.6.0.jar" />
+        <fileset dir="C:/Users/PC_INGLS712/.m2/repository/org/postgresql/postgresql/42.6.0" includes="postgresql-42.6.0.jar" />
     </library>
 
     <dataSource jndiName="jdbc/pgDataSource" transactional="true">

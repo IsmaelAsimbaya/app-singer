@@ -49,6 +49,8 @@ public class SingerService {
         singerRepository.deleteSinger(id);
     }
 
+    //libreria dto mapstruct
+    //jpa buddy
     // Método auxiliar para convertir un objeto Singer a JsonObject
     private JsonObject singerToJson(Singer singer) {
         return Json.createObjectBuilder()
