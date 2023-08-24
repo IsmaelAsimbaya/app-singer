@@ -14,14 +14,18 @@
                   httpPort="8080"
                   httpsPort="9443" />
 
-   <applicationManager autoExpand="true"/>
+    <applicationManager autoExpand="true"/>
 
-   <webApplication contextRoot="/app-singer" location="app-singer.war" />
-
-   <ssl id="defaultSSLConfig" trustDefaultCerts="true" />
+    <webApplication location="guide-cors.war" contextRoot="/"/>
+    <cors domain="/app-singer"
+          allowedOrigins="http://localhost:5000"
+          allowedMethods="GET, OPTIONS, POST,PUT,DELETE"
+          allowCredentials="true"
+          exposeHeaders="MyHeader"/>
+    <ssl id="defaultSSLConfig" trustDefaultCerts="true" />
 
     <library id="PostgreSQLLib">
-        <fileset dir="C:/Users/PC_INGLS712/.m2/repository/org/postgresql/postgresql/42.6.0" includes="postgresql-42.6.0.jar" />
+        <fileset dir="C:/Users/aamon/.m2/repository/org/postgresql/postgresql/42.6.0" includes="postgresql-42.6.0.jar" />
     </library>
 
     <dataSource jndiName="jdbc/pgDataSource" transactional="true">
