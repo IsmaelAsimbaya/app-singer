@@ -39,6 +39,7 @@ public class AlbumResource {
     }
 
     @POST
+
     public Response createAlbum(Album album) {
         albumService.createAlbum(album);
         return Response.status(Response.Status.CREATED).build();

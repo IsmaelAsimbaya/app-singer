@@ -16,12 +16,12 @@
 
     <applicationManager autoExpand="true"/>
 
-    <webApplication location="guide-cors.war" contextRoot="/"/>
+    <webApplication contextRoot="/app-singer" location="app-singer.war" />
     <cors domain="/app-singer"
-          allowedOrigins="http://localhost:5000"
-          allowedMethods="GET, OPTIONS, POST,PUT,DELETE"
-          allowCredentials="true"
-          exposeHeaders="MyHeader"/>
+          allowedOrigins="*"
+          allowedMethods="GET, DELETE, POST, PUT"
+          allowedHeaders="origin, content-type, accept, authorization, cache-control"
+          maxAge="3600" />
     <ssl id="defaultSSLConfig" trustDefaultCerts="true" />
 
     <library id="PostgreSQLLib">
@@ -30,6 +30,7 @@
 
     <dataSource jndiName="jdbc/pgDataSource" transactional="true">
         <jdbcDriver libraryRef="PostgreSQLLib" javax.sql.DataSource="org.postgresql.ds.PGSimpleDataSource" />
-        <properties user="inamjean" password="0QP6mqysrgfNCDNQwyzeN7p7S0DkITAq" URL="jdbc:postgresql://bubble.db.elephantsql.com/inamjean" />
+        <!--<properties user="inamjean" password="0QP6mqysrgfNCDNQwyzeN7p7S0DkITAq" URL="jdbc:postgresql://bubble.db.elephantsql.com/inamjean" />-->
+        <properties user="uosarexk" password="56KyNEpPergyevMtmVtvP-7uFr28GROi" URL="jdbc:postgresql://lallah.db.elephantsql.com/uosarexk" />
     </dataSource>
 </server>

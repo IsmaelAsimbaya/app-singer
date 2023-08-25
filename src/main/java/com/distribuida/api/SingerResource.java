@@ -37,6 +37,7 @@ public class SingerResource {
     }
 
     @POST
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response createSinger(Singer singer) {
         singerService.createSinger(singer);
         return Response.status(Response.Status.CREATED).build();
