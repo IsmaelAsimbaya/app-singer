@@ -39,7 +39,7 @@ public class AlbumResource {
     }
 
     @POST
-
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response createAlbum(Album album) {
         albumService.createAlbum(album);
         return Response.status(Response.Status.CREATED).build();

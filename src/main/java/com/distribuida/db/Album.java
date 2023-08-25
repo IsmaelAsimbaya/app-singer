@@ -15,9 +15,10 @@ public class Album {
 
     @Column(name = "title")
     private String title;
+
     @JsonbDateFormat(value = "yyyy-MM-dd")
     @Column(name = "release_date")
-    private LocalDate releaseDate;
+    private LocalDate release_date;
 
     @ManyToOne
     @JoinColumn(name = "singer_id")
@@ -43,11 +44,11 @@ public class Album {
     }
 
     public LocalDate getReleaseDate() {
-        return releaseDate;
+        return release_date;
     }
 
-    public void setReleaseDate(LocalDate releaseDate) {
-        this.releaseDate = releaseDate;
+    public void setReleaseDate(LocalDate release_date) {
+        this.release_date = release_date;
     }
 
     public Singer getSinger() {
@@ -71,7 +72,7 @@ public class Album {
         return "Album{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", releaseDate=" + releaseDate +
+                ", releaseDate=" + release_date +
                 ", singer=" + singer +
                 ", version=" + version +
                 '}';
