@@ -6,9 +6,9 @@
     <persistence-unit name="PostgrePersistenceUnit" transaction-type="JTA">
         <jta-data-source>jdbc/pgDataSource</jta-data-source>
         <class>com.distribuida.db.Singer</class>
-        <class>com.distribuida.db.Album</class>
+        <class>com.distribuida.db.Instrument</class>
         <properties>
-            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
         </properties>
     </persistence-unit>
 </persistence>

@@ -4,15 +4,18 @@
     <featureManager>
         <feature>jakartaee-10.0</feature>
         <feature>microProfile-6.0</feature>
+        <feature>mpFaultTolerance-4.0</feature>
+        <feature>mpHealth-4.0</feature>
+        <feature>mpMetrics-5.0</feature>
     </featureManager>
 
     <basicRegistry id="basic" realm="BasicRealm">
         <user name="admin" password="admin" />
     </basicRegistry>
+    <!-- <mpMetrics authentication="false"/>-->
 
     <httpEndpoint id="defaultHttpEndpoint"
-                  httpPort="8080"
-                  httpsPort="9443" />
+                  httpPort="8080"/>
 
     <applicationManager autoExpand="true"/>
 
@@ -25,12 +28,11 @@
     <ssl id="defaultSSLConfig" trustDefaultCerts="true" />
 
     <library id="PostgreSQLLib">
-        <fileset dir="C:/Users/aamon/.m2/repository/org/postgresql/postgresql/42.6.0" includes="postgresql-42.6.0.jar" />
+        <fileset dir="C:/HardDisk/Biblioteca/Workspaces/InteliJ/app-singer/src/main/resources/libs" includes="postgresql-42.6.0.jar"/>
     </library>
 
     <dataSource jndiName="jdbc/pgDataSource" transactional="true">
         <jdbcDriver libraryRef="PostgreSQLLib" javax.sql.DataSource="org.postgresql.ds.PGSimpleDataSource" />
-        <!--<properties user="inamjean" password="0QP6mqysrgfNCDNQwyzeN7p7S0DkITAq" URL="jdbc:postgresql://bubble.db.elephantsql.com/inamjean" />-->
-        <properties user="uosarexk" password="56KyNEpPergyevMtmVtvP-7uFr28GROi" URL="jdbc:postgresql://lallah.db.elephantsql.com/uosarexk" />
+        <properties user="inamjean" password="0QP6mqysrgfNCDNQwyzeN7p7S0DkITAq" URL="jdbc:postgresql://bubble.db.elephantsql.com/inamjean" />
     </dataSource>
 </server>

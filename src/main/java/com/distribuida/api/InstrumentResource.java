@@ -1,43 +1,44 @@
 package com.distribuida.api;
 
+import com.distribuida.db.Instrument;
 import com.distribuida.db.Singer;
-import com.distribuida.dto.SingerDto;
+import com.distribuida.dto.InstrumentDto;
+import com.distribuida.service.InstrumentService;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import com.distribuida.service.SingerService;
 import org.eclipse.microprofile.faulttolerance.Retry;
 import org.eclipse.microprofile.faulttolerance.Timeout;
 
 import java.util.List;
 
-@Path("/singers")
+@Path("/instruments")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Transactional
-public class SingerResource {
+public class InstrumentResource {
 
     @Inject
-    private SingerService singerService;
+    private InstrumentService instrumentService;
 
     @GET
     @Timeout(4000)
     @Retry(retryOn = Exception.class , maxRetries = 2)
-    public Response getAllSingers() {
-        List<SingerDto> singers = singerService.getAllSingersDto();
-        return Response.ok(singers).build();
+    public Response getAllInstrumentsDto() {
+        List<InstrumentDto> instruments = instrumentService.getAllInstrumentsDto();
+        return Response.ok(instruments).build();
     }
 
     @GET
     @Timeout(4000)
     @Retry(retryOn = Exception.class , maxRetries = 2)
     @Path("/{id}")
-    public Response getSingerById(@PathParam("id") Integer id) {
-        SingerDto singer = singerService.getSingerDtoById(id);
-        if (singer != null) {
-            return Response.ok(singer).build();
+    public Response getInstrumentDtoById(@PathParam("id") Integer id) {
+        InstrumentDto instrument = instrumentService.getInstrumentDtoById(id);
+        if (instrument != null) {
+            return Response.ok(instrument).build();
         } else {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
@@ -46,8 +47,8 @@ public class SingerResource {
     @POST
     @Timeout(4000)
     @Retry(retryOn = Exception.class , maxRetries = 2)
-    public Response createSinger(Singer singer) {
-        singerService.createSinger(singer);
+    public Response createInstrument(Instrument instrument) {
+        instrumentService.createInstrument(instrument);
         return Response.status(Response.Status.CREATED).build();
     }
 
@@ -55,9 +56,9 @@ public class SingerResource {
     @Timeout(4000)
     @Retry(retryOn = Exception.class , maxRetries = 2)
     @Path("/{id}")
-    public Response updateSinger(@PathParam("id") Integer id, Singer singer) {
-        singer.setId(id);
-        singerService.updateSinger(singer);
+    public Response updateInstrument(@PathParam("id") Integer id, Instrument instrument) {
+        instrument.setId(id);
+        instrumentService.updateInstrument(instrument);
         return Response.ok().build();
     }
 
@@ -65,8 +66,8 @@ public class SingerResource {
     @Timeout(4000)
     @Retry(retryOn = Exception.class , maxRetries = 2)
     @Path("/{id}")
-    public Response deleteSinger(@PathParam("id") Integer id) {
-        singerService.deleteSinger(id);
+    public Response deleteInstrument(@PathParam("id") Integer id) {
+        instrumentService.deleteInstrument(id);
         return Response.noContent().build();
     }
 }

@@ -1,29 +1,13 @@
-package com.distribuida.db;
-
-import jakarta.json.bind.annotation.JsonbDateFormat;
-import jakarta.persistence.*;
+package com.distribuida.dto;
 
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "singer")
-public class Singer {
+public class SingerDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(name = "first_name")
     private String first_name;
-
-    @Column(name = "last_name")
     private String last_name;
-
-    @JsonbDateFormat(value = "yyyy-MM-dd")
-    @Column(name = "birth_date")
     private LocalDate birth_date;
-
-    @Column(name = "version")
     private Integer version;
 
     public Integer getId() {
@@ -68,7 +52,7 @@ public class Singer {
 
     @Override
     public String toString() {
-        return "Singer{" +
+        return "SingerDto{" +
                 "id=" + id +
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +

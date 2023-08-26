@@ -1,14 +1,12 @@
 package com.distribuida.service;
 
+import com.distribuida.dto.SingerDto;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import jakarta.json.Json;
-import jakarta.json.JsonArray;
-import jakarta.json.JsonArrayBuilder;
-import jakarta.json.JsonObject;
 import com.distribuida.db.Singer;
 import com.distribuida.repository.SingerRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @ApplicationScoped
@@ -17,21 +15,19 @@ public class SingerService {
     @Inject
     private SingerRepository singerRepository;
 
-    public JsonArray getAllSingersAsJsonArray() {
+    public List<SingerDto> getAllSingersDto() {
         List<Singer> singers = singerRepository.getAllSingers();
-        JsonArrayBuilder jsonArrayBuilder = Json.createArrayBuilder();
-
+        List<SingerDto> singersDtos = new ArrayList<>();
         for (Singer singer : singers) {
-            jsonArrayBuilder.add(singerToJson(singer));
+            singersDtos.add(singerToDto(singer));
         }
-
-        return jsonArrayBuilder.build();
+        return singersDtos;
     }
 
-    public JsonObject getSingerByIdAsJsonObject(Integer id) {
+    public SingerDto getSingerDtoById(Integer id) {
         Singer singer = singerRepository.getSingerById(id);
         if (singer != null) {
-            return singerToJson(singer);
+            return singerToDto(singer);
         } else {
             return null;
         }
@@ -49,16 +45,13 @@ public class SingerService {
         singerRepository.deleteSinger(id);
     }
 
-    //libreria dto mapstruct
-    //jpa buddy
-    // Método auxiliar para convertir un objeto Singer a JsonObject
-    private JsonObject singerToJson(Singer singer) {
-        return Json.createObjectBuilder()
-                .add("id", singer.getId())
-                .add("first_Name", singer.getFirst_name())
-                .add("last_Name", singer.getLast_name())
-                .add("birth_Date", singer.getBirth_date().toString())
-                .add("version", singer.getVersion().toString())// Convertir a formato adecuado
-                .build();
+    private SingerDto singerToDto(Singer singer) {
+        SingerDto dto = new SingerDto();
+        dto.setId(singer.getId());
+        dto.setFirst_name(singer.getFirst_name());
+        dto.setLast_name(singer.getLast_name());
+        dto.setBirth_date(singer.getBirth_date());
+        dto.setVersion(singer.getVersion());
+        return dto;
     }
 }
