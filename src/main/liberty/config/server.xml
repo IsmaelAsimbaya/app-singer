@@ -31,6 +31,12 @@
 
     <variable name="system.jdbc.dir"
               defaultValue="C:/HardDisk/Biblioteca/Workspaces/InteliJ/app-singer/src/main/resources/libs" />
+    <variable name="db.user"
+              defaultValue="inamjean"/>
+    <variable name="db.password"
+              defaultValue="0QP6mqysrgfNCDNQwyzeN7p7S0DkITAq"/>
+    <variable name="db.url"
+              defaultValue="jdbc:postgresql://bubble.db.elephantsql.com/inamjean"/>
 
     <library id="PostgreSQLLib">
         <fileset dir="${system.jdbc.dir}" includes="postgresql-42.6.0.jar"/>
@@ -38,6 +44,6 @@
 
     <dataSource jndiName="jdbc/pgDataSource" transactional="true">
         <jdbcDriver libraryRef="PostgreSQLLib" javax.sql.DataSource="org.postgresql.ds.PGSimpleDataSource" />
-        <properties user="inamjean" password="0QP6mqysrgfNCDNQwyzeN7p7S0DkITAq" URL="jdbc:postgresql://bubble.db.elephantsql.com/inamjean" />
+        <properties user="${db.user}" password="${db.password}" URL="${db.url}" />
     </dataSource>
 </server>
