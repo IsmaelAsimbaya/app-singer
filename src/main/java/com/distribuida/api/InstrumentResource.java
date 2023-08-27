@@ -1,7 +1,6 @@
 package com.distribuida.api;
 
 import com.distribuida.db.Instrument;
-import com.distribuida.db.Singer;
 import com.distribuida.dto.InstrumentDto;
 import com.distribuida.service.InstrumentService;
 import jakarta.inject.Inject;

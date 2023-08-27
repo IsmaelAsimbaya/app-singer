@@ -7,6 +7,8 @@
         <feature>mpFaultTolerance-4.0</feature>
         <feature>mpHealth-4.0</feature>
         <feature>mpMetrics-5.0</feature>
+        <feature>mpConfig-3.0</feature>
+        <feature>mpContextPropagation-1.3</feature>
     </featureManager>
 
     <basicRegistry id="basic" realm="BasicRealm">
@@ -27,8 +29,11 @@
           maxAge="3600" />
     <ssl id="defaultSSLConfig" trustDefaultCerts="true" />
 
+    <variable name="system.jdbc.dir"
+              defaultValue="C:/HardDisk/Biblioteca/Workspaces/InteliJ/app-singer/src/main/resources/libs" />
+
     <library id="PostgreSQLLib">
-        <fileset dir="C:/HardDisk/Biblioteca/Workspaces/InteliJ/app-singer/src/main/resources/libs" includes="postgresql-42.6.0.jar"/>
+        <fileset dir="${system.jdbc.dir}" includes="postgresql-42.6.0.jar"/>
     </library>
 
     <dataSource jndiName="jdbc/pgDataSource" transactional="true">
